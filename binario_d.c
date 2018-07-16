@@ -22,8 +22,7 @@ int binario_p_decimal(int tam)
 	for(i=0; i<tam; i++)
 	{
 		x= pot(2, tam-1-i);
-		soma+= x;
-		soma*=pilha[0][i];
+		soma+= x*pilha[0][i];
 
 	}
 	return soma;
