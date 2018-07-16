@@ -29,10 +29,12 @@ int inverte_pilha(int tam)
 }
 void print_pilha(int tam)
 {
+	int i;
 	for(i=0; i<tam; i++)
 	{
-		printf("\n%d", pilha[1][i]);
+		printf("%d ", pilha[1][i]);
 	}
+	printf("\n");
 }
 
 int main()
