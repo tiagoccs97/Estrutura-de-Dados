@@ -8,7 +8,7 @@ struct a
 };
 struct a q;
 
-void inserir(int x)
+void inserir(int x, int prioridade)
 {
 	if (q.rear==MAX-1) q.rear=0;
 	else q.rear++;
@@ -18,10 +18,10 @@ void inserir(int x)
 		printf("overflow");
 		return;
 	}
-	q.elementos[q.rear]=x;
+	q.elementos[prioridade][q.rear]=x;
 	return;
 }
-int remover()
+int remover(int prioridade)
 {
 	if (empty())
 	{
@@ -33,7 +33,7 @@ int remover()
 		q.front=0;
 	}
 	else q.front++;
-	return q.elementos[q.front];
+	return q.elementos[prioridade][q.front];
 }
 int empty()
 {
@@ -47,9 +47,14 @@ int empty()
 int main()
 {
 	q.rear=q.front=MAX-1;
+	int prioridade, atendimentos=0;
+	scanf()
 	while(!empty())
 	{
+		printf("Digite a prioridade do atendimento(0 a 3)\n");
+		scanf("%d", &prioridade);
+		
 
 	}
-
+	return 0;
 }
