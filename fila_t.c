@@ -11,6 +11,15 @@ struct a
 };
 struct a q;
 
+
+int empty(int prioridade)
+{
+	if(q.rear[prioridade]==q.front[prioridade] && !(q.elementos[prioridade][q.front[prioridade]-1]))
+	{
+		return 1;
+	}
+	else return 0;
+}
 void inserir(int x, int prioridade)
 {
 	if (q.rear[prioridade]==MAX-1) q.rear[prioridade]=0;
@@ -40,14 +49,7 @@ int remover(int prioridade)
 	else {q.elementos[prioridade][q.front[prioridade]]=0; q.front[prioridade]++;}
 	return q.elementos[prioridade][q.front[prioridade]];
 }
-int empty(int prioridade)
-{
-	if(q.rear[prioridade]==q.front[prioridade] && !(q.front[prioridade]-1))
-	{
-		return 1;
-	}
-	else return 0;
-}
+
 void print_fila(int prioridade)
 {
 	int i;
@@ -76,19 +78,24 @@ int main()
 	{
 		print_fila(i); 		
  	}		
-	printf("\nEspere alguns segundos até iniciar os atendimentos\n");
+	//printf("\nEspere alguns segundos até iniciar os atendimentos\n");
 	
 	
-	if(clock()-3000)
-	{
-		printf("\nOrdem dos atendimentos(crescente)\n");
+	
+	
+		
+
+		printf("\nOrdem dos atendimentos(crescente):\n");
+		
 		for(i=3; i>=0; i--) 
 		{		
-			/*while(!empty(i))
+			while(!empty(i))
 			{
+			
+
 				printf("%c\n", remover(i));
- 			}	*/ 		
+ 			}	 		
  	    }
- 	}		
+ 			 
 	return 0;
 }
