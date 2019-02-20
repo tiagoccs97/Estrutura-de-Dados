@@ -39,11 +39,11 @@ void push(stack* stack, int item)
     stack->top = aux;
 }
 
-stack* add_stack(stack *stac)
+stack* add_stack(stack *p)
 {
     stack *n_stack = (stack*) malloc(sizeof(stack));
     n_stack->top = NULL;
-    n_stack->next = stac;
+    n_stack->next = p;
     return n_stack;
 } 
 
@@ -55,45 +55,84 @@ int pop(stack* stack)
     free(aux);
     return n;
 }
-void PUSH_OR_POP(stack* pilha, char a)
+void inverter(node *head)
+{
+    node *prev = NULL;
+    node *next = head->next;
+    while(prev!=NULL)
+    {
+        head->next = prev;
+        prev = head;
+        head = next;
+        next = next->next;
+    }
+}
+/*void PUSH_OR_POP(stack* pilhinha, char a)
 {
     int n;
     
-    if(a == 'U')
+    if(s[1] == 'U')
     {
-        //if(!is_empty(pilha)) pilha = add_stack(pilha);
+        if(!is_empty(pilhinha)) pilhinha = add_stack(pilhinha);
         while(scanf("%d", &n) != EOF)
         {
-            push(pilha, n);
+            push(pilhinha, n);
         }
     }
-    else if(a == 'O')
+    else if(s[1] == 'O')
     {
-        while(!is_empty(pilha))
+        while(!is_empty(pilhinha))
         {
-            printf("%d ", pop(pilha));
+            printf("%d ", pop(pilhinha));
             
         }
         printf("\n");
-    stack* aux = pilha;
-    pilha = pilha->next;
-    free(aux);    
+        stack* aux = pilhinha;
+        pilhinha = pilhinha->next;
+        free(aux);   
     }
 }
-
+*/
 int main() 
 {
-    char s[1000];
+    char s[1000]; 
+    int n, i=0, j, P[1000];
     stack* pilhinha = create_stack();
     
-  
-        push(pilhinha, 7);
-        push(pilhinha, 8);
-        push(pilhinha, 9);
-        //printf("%d", is_empty(pilhinha));
-        pilhinha = add_stack(pilhinha);
-        PUSH_OR_POP(pilhinha, 'U');
-        printf("%d", pop(pilhinha));
+    while(gets(s))
+    {
+        
+        if(strcmp(s, "PUSH") == 0)
+        {
+            if(!is_empty(pilhinha)) pilhinha = add_stack(pilhinha);
+            while(scanf("%d ", &n))
+            {
+                push(pilhinha, n);
+                
+            }
+        }
+        else if(strcmp(s, "POP") == 0)
+        {
+            if(pilhinha && pilhinha->top)    
+            {    
+                
+                while(!is_empty(pilhinha))
+                {
+                    P[i++] = pop(pilhinha);
+                }
+                for(j=i-1; j>=1; j--) printf("%d ", P[j]);
+                printf("%d", P[j]);
+                i=0;
+                printf("\n");
+                stack* aux = pilhinha;
+                pilhinha = pilhinha->next;
+                free(aux); 
+            }
+            else printf("EMPTY STACK\n");
+        }
+    }   
+       
+       
        
 	return 0;
 }
